@@ -14,11 +14,11 @@ export const createUrl = async (url: string, days: number) => {
 
     redis.set(shortened, url, {ex: ONE_DAY_IN_SECONDS * days});
 
-    return `http://localhost:3000/${shortened}`;
+    return `${process.env.NEXT_PUBLIC_URL}/${shortened}`;
 }
 
 export const fetchUrl = async(url: string) => {
-    const res = await fetch('http://localhost:3000/api/redirect', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/redirect`, {
                 method: 'POST',
                 body: JSON.stringify({route: url})
             });
