@@ -16,16 +16,15 @@ export default function Home() {
     const formData = new FormData(e.currentTarget);
 
     let days: number;
-    if(isChecked || parseInt(formData.get('days') as string) === 0) days = 100;
+    if(isChecked || parseInt(formData.get('days') as string) === 0) days = 30;
     else days = parseInt(formData.get('days') as string);
 
     const res = await createUrl(formData.get('input') as string, days);
-    console.log(res);
     setShortenedUrl(res);
 
   }
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-gray-950 text-white grid grid-rows-2">
       <div className="container mx-auto py-12 px-4">
         <h1 className="text-2xl font-medium mb-8 text-center">shorten url</h1>
         <form onSubmit={handleInput} className="max-w-md mx-auto">
@@ -54,6 +53,7 @@ export default function Home() {
                 placeholder="or click 'no expiration' "
                 className=" text-gray-950 w-full px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                 disabled={isChecked}
+                required
               />
               <label className="pl-4 flex items-center flex-shrink-0">
                 <input
@@ -96,9 +96,9 @@ export default function Home() {
           </div>
         )}
       </div>
-      <div className="w-full flex justify-center">
-        <div className="w-full max-w-md pt-20 pb-5">
-            <p className="text-center">emmanuel paz </p>
+      <div className=" mx-auto container flex justify-center self-end">
+        <div className="w-full max-w-md pb-5">
+            <p className="text-center">emmanuel paz © 2024</p>
         </div>
       </div>
     </div>

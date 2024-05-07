@@ -24,6 +24,9 @@ export const fetchUrl = async(url: string) => {
             });
 
     const body = await res.json();
+    if(body === null) return {
+        url : process.env.NEXT_PUBLIC_URL
+    }
     return {
         url : body.replace("\"", "")
     }
